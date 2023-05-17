@@ -19,7 +19,7 @@ class JobElement extends Component {
         <TitleEle>{title}</TitleEle>
         <DescriptionEle>{description.split('.')[0]}</DescriptionEle>
         <SalaryEle>Salary: {salary}$</SalaryEle>
-        <JobBottom>
+        <JobBottom> 
           <AreaEle>{area}</AreaEle>
           <LinkEle href={url}>Link</LinkEle>
         </JobBottom>
