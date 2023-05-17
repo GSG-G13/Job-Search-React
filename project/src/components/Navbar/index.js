@@ -4,8 +4,8 @@ class Navbar extends Component {
   render() {
     return (
       <div className='navbar'>
-        <img src='/images/navbar-logo.png' alt='Navbar' className='navbar-logo' />
-        <p className='navbar-title'>Linked In</p>
+        <img src='/images/logo.jpg' alt='Navbar' className='navbar-logo' />
+        <p className='navbar-title'>Job Search</p>
       </div>
     )
   }
