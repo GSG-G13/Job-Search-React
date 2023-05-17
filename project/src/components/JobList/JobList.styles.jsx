@@ -16,7 +16,7 @@ export const JobWrap = styled.div`
   display: flex;
   flex-direction: column;
   border: 3px solid rgb(4,112,220);
-  min-height: 250px;
+  min-height: 300px;
   height: fit-content;
   min-width: 330px;
   justify-content:space-between;
@@ -57,6 +57,11 @@ export const DescriptionEle = styled.span`
   font-size: 14px;
   font-weight: 500;
   display: block;
+  overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
 `
 export const SalaryEle = styled(TitleEle)`
   font-size: 14px;

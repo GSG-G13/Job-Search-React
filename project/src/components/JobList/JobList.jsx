@@ -19,10 +19,10 @@ class JobElement extends Component {
         <TitleEle>{title}</TitleEle>
         <DescriptionEle>{description.split('.')[0]}</DescriptionEle>
         <SalaryEle>Salary: {salary}$</SalaryEle>
-        <JobHead>
+        <JobBottom>
           <AreaEle>{area}</AreaEle>
           <LinkEle href={url}>Link</LinkEle>
-        </JobHead>
+        </JobBottom>
       </JobWrap>
     )
   }
@@ -60,10 +60,10 @@ class JobList extends Component {
         {
           !this.props.data.length ?
             this.state.jobs.slice(0, 9).map((job) => (
-              <JobElement key={job.id} title={job.title} description={job.description} label={job.category.label} company={job.company.display_name} area={job.location.area} url={job.redirect_url} salary={job.salary_max} />
+              <JobElement key={job.id} title={job.title} description={job.description} label={job.category.label} company={job.company.display_name} area={job.location.area[0]} url={job.redirect_url} salary={job.salary_max} />
             )) :
             this.props.data.slice(0, 9).map((job) => (
-              <JobElement key={job.id} title={job.title} description={job.description} label={job.category.label} company={job.company.display_name} area={job.location.area} url={job.redirect_url} salary={job.salary_max} />
+              <JobElement key={job.id} title={job.title} description={job.description} label={job.category.label} company={job.company.display_name} area={job.location.area[0]} url={job.redirect_url} salary={job.salary_max} />
             ))
         }
       </Wrapper>
