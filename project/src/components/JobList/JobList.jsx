@@ -1,5 +1,5 @@
 import { Component } from 'react';
-
+import { Wrapper, JobWrap, JobHead, LinkEle, LabelEle, CompanyEle, TitleEle, DescriptionEle, SalaryEle, AreaEle, JobBottom } from './JobList.styles'
 class JobElement extends Component {
   constructor(props) {
     super(props)
@@ -9,32 +9,35 @@ class JobElement extends Component {
   render() {
     const { title, description, label, company, area, url, salary } = this.props;
     return (
-      <div>
-        <h3>{title}</h3>
-        <p>{description.split('.')[0]}</p>
-        <span>{label}</span>
-        <span>{company}</span>
-        <span>{area}</span>
-        <a href={url}>Link</a>
-        <span>{salary}</span>
-      </div>
+      <JobWrap>
+        <JobHead>
+          <LabelEle>{label}</LabelEle>
+          <CompanyEle>Company: {company}</CompanyEle>
+        </JobHead>
+        <TitleEle>{title}</TitleEle>
+        <DescriptionEle>{description.split('.')[0]}</DescriptionEle>
+        <SalaryEle>Salary: {salary}$</SalaryEle>
+        <JobHead>
+          <AreaEle>{area}</AreaEle>
+          <LinkEle href={url}>Link</LinkEle>
+        </JobHead>
+      </JobWrap>
     )
   }
 }
 
 class JobList extends Component {
   state = {
-    jobs: null
+    jobs: []
   }
   // &what=${req.params.word}
   componentDidMount() {
     const handleJobs = (jobs) => {
       this.setState(() => ({ jobs: jobs.results }))
     }
-    fetch(`https://api.adzuna.com/v1/api/jobs/gb/search/1?app_id=99d1457c&app_key=3f231e4166d93072210889237c3b5f61`)
+    fetch(`https://api.adzuna.com/v1/api/jobs/gb/search/1?app_id=9c69a205&app_key=d5388f917e9d70eaed6055398a2930ae	`)
       .then((res) => res.json())
-      .then(handleJobs)
-
+      .then((jobs) => handleJobs(jobs))
   }
 
   render() {
@@ -42,9 +45,13 @@ class JobList extends Component {
       return <h3>Loading...</h3>
     }
     return (
-      this.state.jobs.map((job) => (
-        <JobElement key={job.id} title={job.title} description={job.description} label={job.category.label} company={job.company.display_name} area={job.location.area} url={job.redirect_url} salary={job.salary_max} />
-      ))
+      <Wrapper>
+        {
+          this.state.jobs.slice(0, 9).map((job) => (
+          <JobElement key={job.id} title={job.title} description={job.description} label={job.category.label} company={job.company.display_name} area={job.location.area} url={job.redirect_url} salary={job.salary_max}  />
+          ))
+        }
+      </Wrapper>
     )
   }
 }
