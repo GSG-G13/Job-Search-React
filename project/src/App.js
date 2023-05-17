@@ -1,7 +1,9 @@
+import JobList from "./components/JobList/JobList";
+
 function App() {
   return (
     <div className="App">
-      Hello
+      <JobList />
     </div>
   );
 }
