@@ -1,5 +1,5 @@
 import { Component } from 'react';
-
+import './style.css'
 class JobElement extends Component {
   constructor(props) {
     super(props)
@@ -39,7 +39,13 @@ class JobList extends Component {
 
   render() {
     if (!this.state.jobs) {
-      return <h3>Loading...</h3>
+      return (
+        <div className="load">
+          <div className="one"></div>
+          <div className="two"></div>
+          <div className="three"></div>
+        </div>
+      )
     }
     return (
       this.state.jobs.map((job) => (
