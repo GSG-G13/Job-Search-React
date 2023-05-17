@@ -13,9 +13,11 @@ export const Wrapper = styled.div`
 export const JobWrap = styled.div`
   padding: 1rem;
   width: 27%;
+  display: flex;
   flex-direction: column;
   border: 3px solid rgb(4,112,220);
-  height: 250px;
+  min-height: 250px;
+  height: fit-content;
   min-width: 330px;
   justify-content:space-between;
   border-radius: 10px;
